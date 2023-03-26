@@ -22,8 +22,8 @@ class DictionaryTest {
         assertEquals("gato", dict.SearchWord("gato"));
 
         // Búsqueda de palabras en francés
-        assertEquals("apple", dict.SearchWord("pomme"));
-        assertEquals("banana", dict.SearchWord("banane"));
+        assertEquals("manzana", dict.SearchWord("pomme"));
+        assertEquals("plátano", dict.SearchWord("banane"));
         assertEquals(null, dict.SearchWord("chien"));
     }
 
