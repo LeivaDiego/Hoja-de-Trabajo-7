@@ -34,14 +34,14 @@ public class Main {
                 case 3: //Agregar palabra al diccionario
                     view.Separator();
                     view.ShowMessage("Ingrese la palabra a agregar");
-                    view.ShowMessage("El formato debe ser: ingles,español,frances");
-                    String wordString = input.nextLine();
+                    view.ShowMessage("El formato debe ser: ingles,español,frances\n");
+                    String wordString = input.next();
                     String[] validStrings = wordString.split(",");
                     if(validStrings.length==3) {
                         dictArrayList.add(wordString);
                         dictionary.AddWord(validStrings[0], validStrings[1], validStrings[2]);
                         fileManager.SaveFile(dictPath,dictArrayList);
-                        view.ShowMessage("La palabra Ha sido agregada");
+                        view.ShowMessage("La palabra '"+validStrings[1]+"' ha sido agregada");
                     }else {
                         view.Error("La palabra no esta en el formato correcto");
                     }
@@ -49,11 +49,11 @@ public class Main {
                     break;
                 case 4: //Eliminar palabra del diccionario
                     view.Separator();
-                    view.ShowMessage("Ingrese que palabra desea eliminar del diccionario");
-                    String delete_word = input.nextLine().toLowerCase();
+                    view.ShowMessage("Ingrese que palabra desea eliminar del diccionario\n");
+                    String delete_word = input.next().toLowerCase();
                     String delete_word_eng = dictionary.DeleteWord(delete_word);
                     if (delete_word_eng == null){
-                        view.Error("La palabra ingresada no Existe en el diccionario");
+                        view.Error("La palabra '"+delete_word+"' No Existe en el diccionario");
                     }else {
                         for (int i=0; i<dictArrayList.size();i++){
                             String[] temp = dictArrayList.get(i).split(",");
@@ -62,12 +62,13 @@ public class Main {
                             }
                         }
                         fileManager.SaveFile(dictPath, dictArrayList);
-                        view.ShowMessage("La palabra ha sido eliminada");
+                        view.ShowMessage("La palabra '"+ delete_word+"' ha sido eliminada");
                     }
                     view.Separator();
                     break;
                 case 5: //Traducir archivo
                     fileManager.TranslateFile(filePath,dictionary);
+                    view.ShowMessage("\n");
                     break;
                 case 6: //Salir
                     view.ShowMessage("Ha salido del programa");

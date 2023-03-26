@@ -18,7 +18,7 @@ public class View {
     }
 
     public void Error(String error){
-        System.out.println("ERROR: "+ error);
+        System.out.println("ERROR: "+ error+"\n");
     }
 
     public void ShowMessage(String message){
